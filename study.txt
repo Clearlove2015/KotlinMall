@@ -1,0 +1,11 @@
+一：模块化：（相对独立业务拆分成"块"，单独开发调试，拼接业务模块，组装APP）
+    1.什么是模块化
+    2.为什么需要模块化（业务分离、解耦，通用化，代码复用）
+    3.如何实现模块化（公用模块抽取、业务模块抽取、主工程组装业务模块）
+    4.模块之间的通讯（跨模块跳转、跨模块接口调用、ARouter路由框架）
+
+二：MVP架构
+
+三：Application与Library
+    Application作为应用程序启动：apply plugin：'com.android.application'
+    Library作为库工程被引用：apply plugin:'com.android.library'
