@@ -14,7 +14,11 @@ import org.jetbrains.anko.toast
 class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 
     override fun onRegisterResult(result: Boolean) {
-        toast("注册成功")
+        if(result){
+            toast("注册成功")
+        }else{
+            toast("注册失败")
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,14 +33,14 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
             //toast("${intent.getIntExtra("id", -1)}")
             mPresenter.register(et_name.text.toString(),et_sms.text.toString(),et_psd.text.toString())
         }
+
+        btn_register2.setOnClickListener {
+            //toast("${intent.getIntExtra("id", -1)}")
+            mPresenter.register2(et_name.text.toString(),et_sms.text.toString(),et_psd.text.toString())
+        }
     }
 
     private fun initInject() {
-//        DaggerUserComponent.builder()
-//            .userModule(UserModule())
-//            .build()
-//            .inject(this)
-
         DaggerUserComponent.builder()
             .activityComponent(activityComponent)
             .userModule(UserModule())
