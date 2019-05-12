@@ -9,16 +9,10 @@ import com.odbpo.fenggo.user.services.impl.UserServiceImpl
 import javax.inject.Inject
 import javax.inject.Named
 
-class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
+class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
 
     @Inject
-    //@Named("service")//Java写法
-    @field:[Named("service")]//kotlin写法
-    lateinit var userServices:UserServices
-
-    @Inject
-    @field:[Named("service2")]//kotlin写法
-    lateinit var userServices2:UserServices
+    lateinit var userServices: UserServices
 
     fun register(mobile: String, verifyCode: String, pwd: String) {
         /**
@@ -26,21 +20,7 @@ class RegisterPresenter @Inject constructor(): BasePresenter<RegisterView>() {
          */
         //val userServices = UserServiceImpl()
         userServices.register(mobile, verifyCode, pwd)
-            .execute(object :BaseSubscriber<Boolean>(){
-                override fun onNext(t: Boolean) {
-                    mView.onRegisterResult(t)
-                }
-            })
-
-    }
-
-    fun register2(mobile: String, verifyCode: String, pwd: String) {
-        /**
-         * 业务逻辑
-         */
-        //val userServices = UserServiceImpl()
-        userServices2.register(mobile, verifyCode, pwd)
-            .execute(object :BaseSubscriber<Boolean>(){
+            .execute(lifecycleProvider, object : BaseSubscriber<Boolean>() {
                 override fun onNext(t: Boolean) {
                     mView.onRegisterResult(t)
                 }

@@ -36,7 +36,7 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 
         btn_register2.setOnClickListener {
             //toast("${intent.getIntExtra("id", -1)}")
-            mPresenter.register2(et_name.text.toString(),et_sms.text.toString(),et_psd.text.toString())
+            //mPresenter.register2(et_name.text.toString(),et_sms.text.toString(),et_psd.text.toString())
         }
     }
 

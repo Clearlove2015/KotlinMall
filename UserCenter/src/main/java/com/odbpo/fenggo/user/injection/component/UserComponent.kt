@@ -7,9 +7,12 @@ import com.odbpo.fenggo.user.injection.module.UserModule
 import dagger.Component
 
 @PerComponentScope
-@Component(dependencies = arrayOf(ActivityComponent::class),modules = arrayOf(UserModule::class))
+@Component(
+    dependencies = arrayOf(ActivityComponent::class),
+    modules = arrayOf(UserModule::class)
+)
 interface UserComponent {
 
-    fun inject(activity:RegisterActivity)
+    fun inject(activity: RegisterActivity)
 
 }
