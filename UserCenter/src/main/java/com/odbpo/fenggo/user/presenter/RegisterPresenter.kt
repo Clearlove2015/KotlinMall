@@ -5,9 +5,7 @@ import com.odbpo.fenggo.base_library.presenter.BasePresenter
 import com.odbpo.fenggo.base_library.rx.BaseSubscriber
 import com.odbpo.fenggo.user.presenter.view.RegisterView
 import com.odbpo.fenggo.user.services.UserServices
-import com.odbpo.fenggo.user.services.impl.UserServiceImpl
 import javax.inject.Inject
-import javax.inject.Named
 
 class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
 
@@ -22,7 +20,8 @@ class RegisterPresenter @Inject constructor() : BasePresenter<RegisterView>() {
         userServices.register(mobile, verifyCode, pwd)
             .execute(lifecycleProvider, object : BaseSubscriber<Boolean>() {
                 override fun onNext(t: Boolean) {
-                    mView.onRegisterResult(t)
+                    if(t)
+                    mView.onRegisterResult("注册成功")
                 }
             })
 

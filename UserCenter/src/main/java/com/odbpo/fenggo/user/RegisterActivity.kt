@@ -1,8 +1,7 @@
 package com.odbpo.fenggo.user
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import com.odbpo.fenggo.base_library.ext.onClick
 import com.odbpo.fenggo.base_library.ui.activity.BaseMVPActivity
 import com.odbpo.fenggo.user.injection.component.DaggerUserComponent
 import com.odbpo.fenggo.user.injection.module.UserModule
@@ -13,34 +12,24 @@ import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 
-    override fun onRegisterResult(result: Boolean) {
-        if(result){
-            toast("注册成功")
-        }else{
-            toast("注册失败")
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        initInject()
-
         //mPresenter = RegisterPresenter()//用Dagger注入就不需要手动实例化
 
-        btn_register.setOnClickListener {
-            //toast("${intent.getIntExtra("id", -1)}")
-            mPresenter.register(et_name.text.toString(),et_sms.text.toString(),et_psd.text.toString())
-        }
+//        btn_register.setOnClickListener {
+//            //toast("${intent.getIntExtra("id", -1)}")
+//            mPresenter.register(et_name.text.toString(), et_sms.text.toString(), et_psd.text.toString())
+//        }
 
-        btn_register2.setOnClickListener {
+        btn_register.onClick {
             //toast("${intent.getIntExtra("id", -1)}")
-            //mPresenter.register2(et_name.text.toString(),et_sms.text.toString(),et_psd.text.toString())
+            mPresenter.register(et_name.text.toString(), et_sms.text.toString(), et_psd.text.toString())
         }
     }
 
-    private fun initInject() {
+    override fun injectComponent() {
         DaggerUserComponent.builder()
             .activityComponent(activityComponent)
             .userModule(UserModule())
@@ -49,4 +38,9 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 
         mPresenter.mView = this
     }
+
+    override fun onRegisterResult(result: String) {
+        toast(result)
+    }
+
 }

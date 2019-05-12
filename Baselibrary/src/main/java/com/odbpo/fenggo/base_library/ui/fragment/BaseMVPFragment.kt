@@ -1,4 +1,4 @@
-package com.odbpo.fenggo.base_library.ui.activity
+package com.odbpo.fenggo.base_library.ui.fragment
 
 import android.os.Bundle
 import com.odbpo.fenggo.base_library.common.BaseApplication
@@ -10,7 +10,7 @@ import com.odbpo.fenggo.base_library.presenter.BasePresenter
 import com.odbpo.fenggo.base_library.presenter.view.BaseView
 import javax.inject.Inject
 
-open abstract class BaseMVPActivity<T:BasePresenter<*>>: BaseActivity(),BaseView {
+open abstract class BaseMVPFragment<T : BasePresenter<*>> : BaseFragment(), BaseView {
     override fun showLoading() {
 
     }
@@ -24,9 +24,9 @@ open abstract class BaseMVPActivity<T:BasePresenter<*>>: BaseActivity(),BaseView
     }
 
     @Inject
-    lateinit var mPresenter:T
+    lateinit var mPresenter: T
 
-    lateinit var activityComponent:ActivityComponent
+    lateinit var activityComponent: ActivityComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,8 +38,8 @@ open abstract class BaseMVPActivity<T:BasePresenter<*>>: BaseActivity(),BaseView
 
     private fun initActivityInjection() {
         activityComponent = DaggerActivityComponent.builder()
-            .appComponent((application as BaseApplication).appComponent)
-            .activityModule(ActivityModule(this))
+            .appComponent((activity!!.application as BaseApplication).appComponent)
+            .activityModule(ActivityModule(activity!!))
             .lifeCycleProviderModule(LifeCycleProviderModule(this))
             .build()
     }
