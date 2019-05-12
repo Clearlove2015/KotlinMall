@@ -1,6 +1,7 @@
 package com.odbpo.fenggo.base_library.common
 
 import android.app.Application
+import android.content.Context
 import com.odbpo.fenggo.base_library.injection.component.AppComponent
 import com.odbpo.fenggo.base_library.injection.component.DaggerAppComponent
 import com.odbpo.fenggo.base_library.injection.module.AppModule
@@ -12,12 +13,17 @@ class BaseApplication:Application() {
     override fun onCreate() {
         super.onCreate()
         initInjection()
+        context = this
     }
 
     private fun initInjection() {
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(this))
             .build()
+    }
+
+    companion object {
+        lateinit var context:Context
     }
 
 }

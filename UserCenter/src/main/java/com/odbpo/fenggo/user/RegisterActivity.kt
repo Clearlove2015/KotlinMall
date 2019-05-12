@@ -1,6 +1,7 @@
 package com.odbpo.fenggo.user
 
 import android.os.Bundle
+import com.odbpo.fenggo.base_library.common.AppManager
 import com.odbpo.fenggo.base_library.ext.onClick
 import com.odbpo.fenggo.base_library.ui.activity.BaseMVPActivity
 import com.odbpo.fenggo.user.injection.component.DaggerUserComponent
@@ -41,6 +42,22 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 
     override fun onRegisterResult(result: String) {
         toast(result)
+    }
+
+    override fun onError(text: String) {
+        toast(text)
+    }
+
+    private var pressTime: Long = 0
+
+    override fun onBackPressed() {
+        val time = System.currentTimeMillis()
+        if (time - pressTime > 2000) {
+            toast("再按一次退出程序")
+            pressTime = time
+        } else {
+            AppManager.instance.exitApp(this)
+        }
     }
 
 }

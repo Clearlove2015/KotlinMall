@@ -8,6 +8,7 @@ import com.odbpo.fenggo.base_library.injection.module.ActivityModule
 import com.odbpo.fenggo.base_library.injection.module.LifeCycleProviderModule
 import com.odbpo.fenggo.base_library.presenter.BasePresenter
 import com.odbpo.fenggo.base_library.presenter.view.BaseView
+import org.jetbrains.anko.support.v4.toast
 import javax.inject.Inject
 
 open abstract class BaseMVPFragment<T : BasePresenter<*>> : BaseFragment(), BaseView {
@@ -19,8 +20,8 @@ open abstract class BaseMVPFragment<T : BasePresenter<*>> : BaseFragment(), Base
 
     }
 
-    override fun onError() {
-
+    override fun onError(text:String) {
+        toast(text)
     }
 
     @Inject
