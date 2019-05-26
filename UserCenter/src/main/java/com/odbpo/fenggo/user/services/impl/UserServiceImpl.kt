@@ -1,6 +1,8 @@
 package com.odbpo.fenggo.user.services.impl
 
+import com.odbpo.fenggo.base_library.ext.convert
 import com.odbpo.fenggo.base_library.ext.convertBoolean
+import com.odbpo.fenggo.user.data.protocol.UserInfo
 import com.odbpo.fenggo.user.data.repository.UserRepository
 import com.odbpo.fenggo.user.services.UserServices
 import rx.Observable
@@ -15,5 +17,10 @@ class UserServiceImpl @Inject constructor():UserServices {
         //val repository = UserRepository()//Dagger注入
         return repository.register(mobile,pwd,verifyCode)
             .convertBoolean()
+    }
+
+    override fun login(mobile: String, pwd: String, pushId: String): Observable<UserInfo> {
+        return repository.login(mobile,pwd,pushId)
+            .convert()
     }
 }

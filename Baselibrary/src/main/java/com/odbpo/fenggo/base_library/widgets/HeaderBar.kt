@@ -1,10 +1,14 @@
 package com.odbpo.fenggo.base_library.widgets
 
+import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.TextView
 import com.odbpo.fenggo.base_library.R
+import com.odbpo.fenggo.base_library.ext.onClick
 import kotlinx.android.synthetic.main.layout_header_bar.view.*
 
 
@@ -39,5 +43,25 @@ class HeaderBar @JvmOverloads constructor(
             mRightTv.visibility = View.VISIBLE
         }
 
+        //返回键统一处理，如果需要特殊处理的请通过下面暴露的方法获取资源id处理
+        mLeftIv.onClick {
+            if(context is Activity){
+                (context as Activity).finish()
+            }
+        }
+
+    }
+
+    //暴露获取资源id方法
+    fun getLeftView():ImageView{
+        return mLeftIv
+    }
+
+    fun getRightView():TextView{
+        return mRightTv
+    }
+
+    fun getTitleView():TextView{
+        return mTitleTv
     }
 }

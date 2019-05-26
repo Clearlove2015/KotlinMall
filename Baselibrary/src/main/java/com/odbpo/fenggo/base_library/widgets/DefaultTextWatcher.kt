@@ -6,7 +6,7 @@ import android.text.TextWatcher
 /**
  * 默认TextWatcher，空实现
  */
-class DefaultTextWatcher :TextWatcher{
+open class DefaultTextWatcher :TextWatcher{
     override fun afterTextChanged(s: Editable?) {
 
     }

@@ -1,12 +1,10 @@
 package com.odbpo.fenggo.kotlin_project.ui.activity
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.odbpo.fenggo.kotlin_project.R
-import com.odbpo.fenggo.user.RegisterActivity
+import com.odbpo.fenggo.user.ui.activity.RegisterActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity() {

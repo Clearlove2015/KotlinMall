@@ -1,7 +1,7 @@
 package com.odbpo.fenggo.user.data.protocol
 
-data class RegisterReq(
+data class LoginReq(
     val mobile: String,
     val pwd: String,
-    val verifyCode: String
+    val pushId: String
 )

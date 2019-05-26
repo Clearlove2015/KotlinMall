@@ -1,10 +1,13 @@
 package com.odbpo.fenggo.base_library.ext
 
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import com.odbpo.fenggo.base_library.data.protocol.BaseResp
 import com.odbpo.fenggo.base_library.rx.BaseFunc
 import com.odbpo.fenggo.base_library.rx.BaseFuncBoolean
 import com.odbpo.fenggo.base_library.rx.BaseSubscriber
+import com.odbpo.fenggo.base_library.widgets.DefaultTextWatcher
 import com.trello.rxlifecycle.LifecycleProvider
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
@@ -34,4 +37,13 @@ fun View.onClick(listener: View.OnClickListener) {
 
 fun View.onClick(method: () -> Unit) {
     this.setOnClickListener { method() }
+}
+
+fun Button.enable(et:EditText,method:()->Boolean){
+    val btn = this
+    et.addTextChangedListener(object :DefaultTextWatcher(){
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            btn.isEnabled = method()
+        }
+    })
 }

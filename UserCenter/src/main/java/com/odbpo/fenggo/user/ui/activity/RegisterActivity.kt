@@ -1,9 +1,12 @@
-package com.odbpo.fenggo.user
+package com.odbpo.fenggo.user.ui.activity
 
 import android.os.Bundle
+import android.view.View
 import com.odbpo.fenggo.base_library.common.AppManager
+import com.odbpo.fenggo.base_library.ext.enable
 import com.odbpo.fenggo.base_library.ext.onClick
 import com.odbpo.fenggo.base_library.ui.activity.BaseMVPActivity
+import com.odbpo.fenggo.user.R
 import com.odbpo.fenggo.user.injection.component.DaggerUserComponent
 import com.odbpo.fenggo.user.injection.module.UserModule
 import com.odbpo.fenggo.user.presenter.RegisterPresenter
@@ -11,7 +14,10 @@ import com.odbpo.fenggo.user.presenter.view.RegisterView
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
-class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
+/**
+ * 注册界面
+ */
+class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView, View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,15 +25,20 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
 
         //mPresenter = RegisterPresenter()//用Dagger注入就不需要手动实例化
 
-//        btn_register.setOnClickListener {
-//            //toast("${intent.getIntExtra("id", -1)}")
-//            mPresenter.register(et_name.text.toString(), et_sms.text.toString(), et_psd.text.toString())
-//        }
+        initView()
+    }
 
-        btn_register.onClick {
-            //toast("${intent.getIntExtra("id", -1)}")
-            mPresenter.register(et_name.text.toString(), et_sms.text.toString(), et_psd.text.toString())
-        }
+    /**
+     * 初始化视图
+     */
+    private fun initView() {
+        mRegisterBtn.enable(mMobileEt, { isBtnEnable() })
+        mRegisterBtn.enable(mVerifyCodeEt, { isBtnEnable() })
+        mRegisterBtn.enable(mPwdEt, { isBtnEnable() })
+        mRegisterBtn.enable(mPwdConfirmEt, { isBtnEnable() })
+
+        mVerifyCodeBtn.onClick(this)
+        mRegisterBtn.onClick(this)
     }
 
     override fun injectComponent() {
@@ -40,6 +51,9 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
         mPresenter.mView = this
     }
 
+    /**
+     * 注册回调
+     */
     override fun onRegisterResult(result: String) {
         toast(result)
     }
@@ -58,6 +72,25 @@ class RegisterActivity : BaseMVPActivity<RegisterPresenter>(), RegisterView {
         } else {
             AppManager.instance.exitApp(this)
         }
+    }
+
+    override fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.mVerifyCodeBtn -> {
+                mVerifyCodeBtn.requestSendVerifyNumber()
+                toast("发送验证码成功")
+            }
+            R.id.mRegisterBtn -> {
+                mPresenter.register(mMobileEt.text.toString(), mVerifyCodeEt.text.toString(), mPwdEt.text.toString())
+            }
+        }
+    }
+
+    private fun isBtnEnable(): Boolean {
+        return mMobileEt.text.isNullOrEmpty().not() &&
+                mVerifyCodeBtn.text.isNullOrEmpty().not() &&
+                mPwdEt.text.isNullOrEmpty().not() &&
+                mPwdConfirmEt.text.isNullOrEmpty().not();
     }
 
 }

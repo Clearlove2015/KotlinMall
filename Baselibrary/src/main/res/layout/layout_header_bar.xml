@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:background="@color/common_blue"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/common_header_bar_height">
-    <ImageView android:id="@+id/mLeftIv"
-               android:paddingLeft="@dimen/common_padding"
-               android:paddingRight="@dimen/common_padding"
-               style="@style/WrapMatch"
-               android:src="@drawable/icon_back"/>
+
+    <ImageView
+            android:id="@+id/mLeftIv"
+            android:paddingLeft="@dimen/common_padding"
+            android:paddingRight="@dimen/common_padding"
+            style="@style/WrapMatch"
+            android:src="@drawable/icon_back"/>
+
     <TextView
             android:id="@+id/mTitleTv"
             android:textSize="@dimen/text_large_size"
             android:textColor="@color/common_white"
             style="@style/WrapWrap"
             android:layout_centerInParent="true"/>
+
     <TextView
             android:id="@+id/mRightTv"
             style="@style/WrapMatch"
