@@ -23,4 +23,16 @@ class UserServiceImpl @Inject constructor():UserServices {
         return repository.login(mobile,pwd,pushId)
             .convert()
     }
+
+    override fun forgetPwd(mobile: String, verfyCode: String): Observable<Boolean> {
+        return repository.forgetPwd(mobile,verfyCode)
+            .convertBoolean()
+    }
+
+    override fun resetPwd(mobile: String, pwd: String): Observable<Boolean> {
+        return repository.resetPwd(mobile,pwd)
+            .convertBoolean()
+    }
+
+
 }

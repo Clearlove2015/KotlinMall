@@ -11,6 +11,8 @@
             android:name="com.odbpo.fenggo.base_library.common.BaseApplication">
         <activity android:name=".ui.activity.RegisterActivity"/>
         <activity android:name=".ui.activity.LoginActivity"/>
+        <activity android:name=".ui.activity.ForgetPwdActivity"/>
+        <activity android:name=".ui.activity.ResetPwdActivity"/>
     </application>
 
 </manifest>

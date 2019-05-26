@@ -2,6 +2,7 @@ package com.odbpo.fenggo.user.ui.activity
 
 import android.os.Bundle
 import android.view.View
+import com.odbpo.fenggo.base_library.common.AppManager
 import com.odbpo.fenggo.base_library.ext.enable
 import com.odbpo.fenggo.base_library.ext.onClick
 import com.odbpo.fenggo.base_library.ui.activity.BaseMVPActivity
@@ -23,6 +24,9 @@ class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClick
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        //mPresenter = LoginPresenter()//用Dagger注入就不需要手动实例化
+
         initView()
     }
 
@@ -34,6 +38,7 @@ class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClick
         mLoginBtn.enable(mPwdEt, { isBtnEnable() })
 
         mLoginBtn.onClick(this)
+        mForgetPwdTv.onClick(this)
 
         //mHeaderBar.mRightTv.onClick(this)//此处不能直接引用内部资源,只能获取到activity_login.xml中的id
         mHeaderBar.getRightView().onClick(this)//需要通过自定义控件暴露的方法获取资源id
@@ -68,12 +73,30 @@ class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClick
             R.id.mLoginBtn -> {
                 mPresenter.login(mMobileEt.text.toString(), mPwdEt.text.toString(), "")
             }
+            R.id.mForgetPwdTv -> {
+                startActivity<ForgetPwdActivity>()
+            }
         }
     }
 
     private fun isBtnEnable(): Boolean {
         return mMobileEt.text.isNullOrEmpty().not() &&
                 mPwdEt.text.isNullOrEmpty().not()
+    }
+
+    /**
+     * 双击退出
+     */
+    private var pressTime: Long = 0
+
+    override fun onBackPressed() {
+        val time = System.currentTimeMillis()
+        if (time - pressTime > 2000) {
+            toast("再按一次退出程序")
+            pressTime = time
+        } else {
+            AppManager.instance.exitApp(this)
+        }
     }
 
 }
