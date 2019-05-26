@@ -28,12 +28,14 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     api 'com.android.support:appcompat-v7:28.0.0'
-    api 'com.android.support:support-media-compat:28.0.0'//解决依赖包版本不同的冲突（直接指定使用特定版本号）
+    api 'com.android.support:support-media-compat:28.0.0'
+
+    //解决依赖包版本不同的冲突（直接指定使用特定版本号）
     api 'com.android.support:support-v4:28.0.0'
     api 'com.android.support:recyclerview-v7:28.0.0'
+    api 'com.android.support:design:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -63,4 +65,48 @@ dependencies {
 
     //Glide
     api "com.github.bumptech.glide:glide:$glide_version"
+
+    //Circle ImageView
+    api "de.hdodenhof:circleimageview:${circle_imageView_version}"
+
+    //Take Photo
+    api "com.jph.takephoto:takephoto_library:${take_photo_version}"
+
+    //Alert View
+    api "com.bigkoo:alertview:${alert_view_version}"
+
+    //七牛
+    api 'com.qiniu:qiniu-android-sdk:7.3.+'
+
+    //底部导航
+    api 'com.ashokvarma.android:bottom-navigation-bar:2.0.2'
+
+    //Banner
+    api 'com.youth.banner:banner:1.4.10'
+
+    //最新版本
+
+    //标签
+    implementation 'com.github.shts:TriangleLabelView:1.1.2'
+
+    //画廊
+    implementation 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
+
+    //MulitStateView
+    implementation "com.github.Kennyc1012:MultiStateView:$multi_state_view_version"
+
+    //上下拉刷新
+    api 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'
+
+    //Kotlin Bus
+    api 'com.eightbitlab:rxbus:1.0.2'
+
+    //FlowLayout
+    api 'com.zhy:flowlayout-lib:1.0.3'
+
+    //ARouter
+    api "com.alibaba:arouter-api:$arouter_api_version"
+
+    //BadgeView
+    api 'q.rorbin:badgeview:1.1.2'
 }
