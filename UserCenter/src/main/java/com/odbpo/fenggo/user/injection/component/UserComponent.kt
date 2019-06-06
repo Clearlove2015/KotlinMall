@@ -2,6 +2,7 @@ package com.odbpo.fenggo.user.injection.component
 
 import com.odbpo.fenggo.base_library.injection.component.ActivityComponent
 import com.odbpo.fenggo.user.injection.PerComponentScope
+import com.odbpo.fenggo.user.injection.module.UploadModule
 import com.odbpo.fenggo.user.injection.module.UserModule
 import com.odbpo.fenggo.user.ui.activity.*
 import dagger.Component
@@ -9,7 +10,7 @@ import dagger.Component
 @PerComponentScope
 @Component(
     dependencies = arrayOf(ActivityComponent::class),
-    modules = arrayOf(UserModule::class)
+    modules = arrayOf(UserModule::class,UploadModule::class)
 )
 interface UserComponent {
 

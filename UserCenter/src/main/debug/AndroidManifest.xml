@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.odbpo.fenggo.user">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
             android:allowBackup="true"
@@ -10,6 +12,18 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:name="com.odbpo.fenggo.base_library.common.BaseApplication">
+
+        <!--<provider-->
+                <!--android:name="android.support.v4.content.FileProvider"-->
+                <!--android:authorities="com.odbpo.fenggo.user.fileprovider"-->
+                <!--tools:replace="android:authorities"-->
+                <!--android:exported="false"-->
+                <!--android:grantUriPermissions="true">-->
+            <!--<meta-data-->
+                    <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                    <!--android:resource="@xml/file_paths" />-->
+        <!--</provider>-->
+
         <activity android:name=".ui.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

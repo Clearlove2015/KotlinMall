@@ -3,12 +3,14 @@
           package="com.odbpo.fenggo.user">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
             android:allowBackup="true"
             android:label="@string/app_name"
             android:supportsRtl="true"
             android:name="com.odbpo.fenggo.base_library.common.BaseApplication">
+
         <activity android:name=".ui.activity.RegisterActivity"/>
         <activity android:name=".ui.activity.LoginActivity"/>
         <activity android:name=".ui.activity.ForgetPwdActivity"/>

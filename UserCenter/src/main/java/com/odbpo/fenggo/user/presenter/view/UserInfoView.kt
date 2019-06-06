@@ -4,6 +4,6 @@ import com.odbpo.fenggo.base_library.presenter.view.BaseView
 
 interface UserInfoView:BaseView {
 
-    //fun onRegisterResult(result:String)
+    fun onGetUploadTokenResult(result:String)
 
 }
