@@ -13,6 +13,7 @@
             android:theme="@style/AppTheme"
             android:name="com.odbpo.fenggo.base_library.common.BaseApplication">
 
+        <!--处理Android 7.0相机权限问题-->
         <!--<provider-->
                 <!--android:name="android.support.v4.content.FileProvider"-->
                 <!--android:authorities="com.odbpo.fenggo.user.fileprovider"-->

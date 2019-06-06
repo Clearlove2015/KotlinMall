@@ -2,6 +2,7 @@ package com.odbpo.fenggo.user.ui.activity
 
 import android.os.Bundle
 import android.view.View
+import com.kotlin.user.utils.UserPrefsUtils
 import com.odbpo.fenggo.base_library.common.AppManager
 import com.odbpo.fenggo.base_library.ext.enable
 import com.odbpo.fenggo.base_library.ext.onClick
@@ -59,6 +60,7 @@ class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClick
      */
     override fun onLoginResult(result: UserInfo) {
         toast("登录成功")
+        UserPrefsUtils.putUserInfo(result)//存储用户数据
     }
 
     override fun onError(text: String) {
