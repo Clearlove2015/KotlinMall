@@ -1,24 +1,28 @@
 package com.odbpo.fenggo.kotlin_project.ui.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.odbpo.fenggo.kotlin_project.R
-import com.odbpo.fenggo.user.ui.activity.RegisterActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.startActivity
+import rx.Observable
+import rx.android.schedulers.AndroidSchedulers
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        btn_register.setOnClickListener {
-//            val intent = Intent(this,RegisterActivity::class.java)
-//            startActivity(intent)
 
-//            startActivity(intentFor<RegisterActivity>("id" to 5))
+        mBottomNavBar.checkMsgBadge(false)
+        mBottomNavBar.checkCartBadge(20)
 
-            startActivity<RegisterActivity>("id" to 5)
-        }
+        Observable.timer(2,TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ mBottomNavBar.checkMsgBadge(true) })
+
+        Observable.timer(5,TimeUnit.SECONDS)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ mBottomNavBar.checkCartBadge(0) })
     }
 }
