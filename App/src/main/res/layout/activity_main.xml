@@ -2,7 +2,14 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/MatchMatch.Vertical"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        >
+
+    <FrameLayout
+            android:id="@+id/mContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
     <com.odbpo.fenggo.base_library.widgets.BottomNavBar
             android:id="@+id/mBottomNavBar"

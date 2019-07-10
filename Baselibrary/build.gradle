@@ -87,13 +87,13 @@ dependencies {
     //最新版本
 
     //标签
-    implementation 'com.github.shts:TriangleLabelView:1.1.2'
+    api 'com.github.shts:TriangleLabelView:1.1.2'
 
     //画廊
-    implementation 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
+    api 'com.github.crosswall:Android-Coverflow:release-v1.0.4'
 
     //MulitStateView
-    implementation "com.github.Kennyc1012:MultiStateView:$multi_state_view_version"
+    api "com.github.Kennyc1012:MultiStateView:$multi_state_view_version"
 
     //上下拉刷新
     api 'cn.bingoogolapple:bga-refreshlayout:1.1.7@aar'

@@ -3,6 +3,8 @@ package com.odbpo.fenggo.base_library.ext
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import com.kotlin.base.utils.GlideUtils
 import com.odbpo.fenggo.base_library.data.protocol.BaseResp
 import com.odbpo.fenggo.base_library.rx.BaseFunc
 import com.odbpo.fenggo.base_library.rx.BaseFuncBoolean
@@ -46,4 +48,11 @@ fun Button.enable(et:EditText,method:()->Boolean){
             btn.isEnabled = method()
         }
     })
+}
+
+/*
+    ImageView加载网络图片
+ */
+fun ImageView.loadUrl(url: String) {
+    GlideUtils.loadUrlImage(context, url, this)
 }
