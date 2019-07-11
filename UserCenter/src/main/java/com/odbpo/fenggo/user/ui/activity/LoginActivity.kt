@@ -61,6 +61,7 @@ class LoginActivity : BaseMVPActivity<LoginPresenter>(), LoginView, View.OnClick
     override fun onLoginResult(result: UserInfo) {
         toast("登录成功")
         UserPrefsUtils.putUserInfo(result)//存储用户数据
+        finish()
     }
 
     override fun onError(text: String) {
