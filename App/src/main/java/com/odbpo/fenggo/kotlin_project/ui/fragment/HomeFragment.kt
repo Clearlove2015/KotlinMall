@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.kotlin.base.widgets.BannerImageLoader
 import com.kotlin.mall.common.*
+import com.odbpo.fenggo.base_library.ext.onClick
 import com.odbpo.fenggo.base_library.ui.fragment.BaseFragment
+import com.odbpo.fenggo.goodscenter.ui.activity.SearchGoodsActivity
 import com.odbpo.fenggo.kotlin_project.R
 import com.odbpo.fenggo.kotlin_project.ui.adapter.HomeDiscountAdapter
 import com.odbpo.fenggo.kotlin_project.ui.adapter.TopicAdapter
@@ -15,6 +17,8 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_home.*
 import me.crosswall.lib.coverflow.CoverFlow
+import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 
 class HomeFragment:BaseFragment() {
 
@@ -29,10 +33,24 @@ class HomeFragment:BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //视图渲染完成后再取id
+        initView()
         initBanner()
         initNews()
         initDiscount()
         initTopic()
+    }
+
+    /**
+     * 初始化视图
+     */
+    private fun initView() {
+        mSearchEt.onClick {
+            startActivity<SearchGoodsActivity>()
+        }
+
+        mScanIv.onClick {
+            toast(R.string.coming_soon_tip)
+        }
     }
 
     private fun initBanner() {
