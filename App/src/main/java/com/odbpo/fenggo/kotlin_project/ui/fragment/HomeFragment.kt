@@ -50,6 +50,7 @@ class HomeFragment:BaseFragment() {
 
         mScanIv.onClick {
             toast(R.string.coming_soon_tip)
+            //startActivity<GoodsDetailActivity>()
         }
     }
 

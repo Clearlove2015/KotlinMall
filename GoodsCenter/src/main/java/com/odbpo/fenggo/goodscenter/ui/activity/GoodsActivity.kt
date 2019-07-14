@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.kennyc.view.MultiStateView
+import com.kotlin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.odbpo.fenggo.base_library.ext.startLoading
 import com.odbpo.fenggo.base_library.ui.activity.BaseMVPActivity
 import com.odbpo.fenggo.goodscenter.R
@@ -16,6 +17,7 @@ import com.odbpo.fenggo.goodscenter.presenter.GoodsListPresenter
 import com.odbpo.fenggo.goodscenter.presenter.view.GoodsListView
 import com.odbpo.fenggo.goodscenter.ui.adapter.GoodsAdapter
 import kotlinx.android.synthetic.main.activity_goods.*
+import org.jetbrains.anko.startActivity
 
 class GoodsActivity : BaseMVPActivity<GoodsListPresenter>(), GoodsListView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
@@ -38,6 +40,11 @@ class GoodsActivity : BaseMVPActivity<GoodsListPresenter>(), GoodsListView, BGAR
         mGoodsRv.layoutManager = GridLayoutManager(this, 2)
         goodsAdapter = GoodsAdapter(this)
         mGoodsRv.adapter = goodsAdapter
+        goodsAdapter.setOnItemClickListener(object :BaseRecyclerViewAdapter.OnItemClickListener<Goods>{
+            override fun onItemClick(item: Goods, position: Int) {
+                startActivity<GoodsDetailActivity>(GoodsConstant.KEY_GOODS_ID to item.id)
+            }
+        })
     }
 
     //初始化BGARefreshLayout
