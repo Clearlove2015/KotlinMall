@@ -35,4 +35,5 @@ class GoodsRepository @Inject constructor() {
     fun getGoodsDetail(goodsId: Int): Observable<BaseResp<Goods>> {
         return RetrofitFactory.instance.create(GoodsApi::class.java).getGoodsDetail(GetGoodsDetailReq(goodsId))
     }
+
 }

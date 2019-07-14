@@ -50,8 +50,13 @@ class GoodsActivity : BaseMVPActivity<GoodsListPresenter>(), GoodsListView, BGAR
     }
 
     private fun loadData() {
-        mMultiStateView.startLoading()
-        mPresenter.getGoodsList(intent.getIntExtra(GoodsConstant.KEY_CATEGORY_ID, 1), mCurrentPage)
+        if (intent.getIntExtra(GoodsConstant.KEY_SEARCH_GOODS_TYPE, 0) != 0) {
+            mMultiStateView.startLoading()
+            mPresenter.getGoodsListByKeyWord(intent.getStringExtra(GoodsConstant.KEY_GOODS_KEYWORD), mCurrentPage)
+        } else {
+            mMultiStateView.startLoading()
+            mPresenter.getGoodsList(intent.getIntExtra(GoodsConstant.KEY_CATEGORY_ID, 1), mCurrentPage)
+        }
     }
 
     override fun injectComponent() {
