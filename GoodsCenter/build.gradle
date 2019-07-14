@@ -14,7 +14,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -37,4 +37,8 @@ dependencies {
 
     //Dagger2 kapt
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //ARouter
+    //kapt "com.alibaba:arouter-compiler:$arouter_compiler_version"
+
 }

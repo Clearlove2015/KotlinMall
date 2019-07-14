@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
+import com.odbpo.fenggo.goodscenter.ui.fragment.CartFragment
 import com.odbpo.fenggo.goodscenter.ui.fragment.CategoryFragment
 import com.odbpo.fenggo.kotlin_project.R
 import com.odbpo.fenggo.kotlin_project.ui.fragment.HomeFragment
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     private val mHomeFragment by lazy { HomeFragment() }
     private val mCategoryFragment by lazy { CategoryFragment() }
-    private val mCartFragment by lazy { HomeFragment() }
+    private val mCartFragment by lazy { CartFragment() }
     private val mMsgFragment by lazy { HomeFragment() }
     private val mMeFragment by lazy { MeFragment() }
 

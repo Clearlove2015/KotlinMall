@@ -1,4 +1,4 @@
-package com.odbpo.fenggo.goodscenter.injection
+package com.odbpo.fenggo.base_library.injection
 
 import java.lang.annotation.Documented
 import java.lang.annotation.Retention

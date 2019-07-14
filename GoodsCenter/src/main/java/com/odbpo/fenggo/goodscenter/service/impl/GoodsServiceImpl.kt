@@ -22,4 +22,9 @@ class GoodsServiceImpl @Inject constructor():GoodsServices {
             .convert()
     }
 
+    override fun getGoodsDetail(goodsId: Int): Observable<Goods> {
+        return repository.getGoodsDetail(goodsId)
+            .convert()
+    }
+
 }

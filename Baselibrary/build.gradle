@@ -15,6 +15,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
 
     }
 
@@ -109,4 +110,12 @@ dependencies {
 
     //BadgeView
     api 'q.rorbin:badgeview:1.1.2'
+
+    //NumberButton
+    api 'ren.qinc.numberbutton:numberbutton:0.0.1'
+
+    //解决方法数限制
+    //https://www.cnblogs.com/whycxb/p/9792192.html
+    api 'com.android.support:multidex:1.0.3'
+
 }

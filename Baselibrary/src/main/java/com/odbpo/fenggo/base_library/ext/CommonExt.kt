@@ -15,6 +15,7 @@ import com.odbpo.fenggo.base_library.rx.BaseSubscriber
 import com.odbpo.fenggo.base_library.widgets.DefaultTextWatcher
 import com.trello.rxlifecycle.LifecycleProvider
 import org.jetbrains.anko.find
+import ren.qinc.numberbutton.NumberButton
 import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -76,4 +77,11 @@ fun MultiStateView.startLoading() {
  */
 fun View.setVisible(visible: Boolean) {
     this.visibility = if (visible) View.VISIBLE else View.GONE
+}
+
+/*
+    三方控件扩展
+ */
+fun NumberButton.getEditText(): EditText {
+    return find(ren.qinc.numberbutton.R.id.text_count)
 }
